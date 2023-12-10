@@ -1,5 +1,6 @@
 import React from 'react';
 import {SafeAreaView} from 'react-native';
+import {Distance} from './src/components/Distance';
 import {StarShips} from './src/components/StarShips';
 import {ApolloClient, InMemoryCache, ApolloProvider} from '@apollo/client';
 
@@ -9,9 +10,12 @@ function App(): React.JSX.Element {
     cache: new InMemoryCache(),
   });
   return (
-    <SafeAreaView>
+    <SafeAreaView style={{flex: 1}}>
       <ApolloProvider client={client}>
-        <StarShips />
+        <>
+          <Distance />
+          <StarShips />
+        </>
       </ApolloProvider>
     </SafeAreaView>
   );

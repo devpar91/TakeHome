@@ -10,32 +10,41 @@ export const StarShips = (): React.JSX.Element => {
       {loading ? (
         <Text>Loading...</Text>
       ) : (
-        <FlatList
-          style={styles.listContainer}
-          data={data?.allStarships?.edges}
-          keyExtractor={item => item?.node?.id}
-          renderItem={({item: edge}) => (
-            <View style={styles.itemContainer}>
-              <Text style={styles.itemTitle}>{edge?.node?.name}</Text>
-            </View>
-          )}
-        />
+        <>
+          <Text style={styles.title}>Star Ships</Text>
+
+          <FlatList
+            style={styles.listContainer}
+            data={data?.allStarships?.edges}
+            keyExtractor={item => item?.node?.id}
+            renderItem={({item: edge}) => (
+              <View style={styles.itemContainer}>
+                <Text style={styles.itemTitle}>{edge?.node?.name}</Text>
+              </View>
+            )}
+          />
+        </>
       )}
     </>
   );
 };
 
 const styles = StyleSheet.create({
+  title: {
+    paddingTop: 10,
+    textAlign: 'center',
+    fontWeight: '600',
+    fontSize: 18,
+  },
   listContainer: {
     marginTop: 10,
-    // marginBottom: 50,
   },
   itemContainer: {
     marginTop: 15,
     paddingHorizontal: 12,
   },
   itemTitle: {
-    fontSize: 18,
-    fontWeight: '600',
+    fontSize: 16,
+    fontWeight: '400',
   },
 });
